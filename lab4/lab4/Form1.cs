@@ -15,7 +15,7 @@ namespace lab4
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Ініціалізуємо координатну площину після завантаження форми
+            // Р†РЅС–С†С–Р°Р»С–Р·СѓС”РјРѕ РєРѕРѕСЂРґРёРЅР°С‚РЅСѓ РїР»РѕС‰РёРЅСѓ РїС–СЃР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ С„РѕСЂРјРё
             _coordinatePlane = new CoordinatePlane(pictureBox1);
             textBox1.Text = "0";
             textBox2.Text = "0";
@@ -27,35 +27,35 @@ namespace lab4
             {
                 if (_coordinatePlane == null) return;
 
-                // Отримуємо та перевіряємо координати
+                // РћС‚СЂРёРјСѓС”РјРѕ С‚Р° РїРµСЂРµРІС–СЂСЏС”РјРѕ РєРѕРѕСЂРґРёРЅР°С‚Рё
                 if (!double.TryParse(textBox1.Text, out double x))
                 {
-                    MessageBox.Show("Будь ласка, введіть коректне числове значення для X!", "Помилка введення",
+                    MessageBox.Show("ГЃГіГ¤Гј Г«Г Г±ГЄГ , ГўГўГҐГ¤ВіГІГј ГЄГ®Г°ГҐГЄГІГ­ГҐ Г·ГЁГ±Г«Г®ГўГҐ Г§Г­Г Г·ГҐГ­Г­Гї Г¤Г«Гї X!", "ГЏГ®Г¬ГЁГ«ГЄГ  ГўГўГҐГ¤ГҐГ­Г­Гї",
                                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (!double.TryParse(textBox2.Text, out double y))
                 {
-                    MessageBox.Show("Будь ласка, введіть коректне числове значення для Y!", "Помилка введення",
+                    MessageBox.Show("ГЃГіГ¤Гј Г«Г Г±ГЄГ , ГўГўГҐГ¤ВіГІГј ГЄГ®Г°ГҐГЄГІГ­ГҐ Г·ГЁГ±Г«Г®ГўГҐ Г§Г­Г Г·ГҐГ­Г­Гї Г¤Г«Гї Y!", "ГЏГ®Г¬ГЁГ«ГЄГ  ГўГўГҐГ¤ГҐГ­Г­Гї",
                                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Створюємо крапку та визначаємо чверть
+                // РЎС‚РІРѕСЂСЋС”РјРѕ РєСЂР°РїРєСѓ С‚Р° РІРёР·РЅР°С‡Р°С”РјРѕ С‡РІРµСЂС‚СЊ
                 Point userPoint = new Point(x, y);
                 int quadrant = QuadrantDeterminer.GetQuadrant(userPoint);
                 string quadrantDescription = QuadrantDeterminer.GetQuadrantDescription(quadrant);
 
-                // Відображаємо точку на графіку
+                // Р’С–РґРѕР±СЂР°Р¶Р°С”РјРѕ С‚РѕС‡РєСѓ РЅР° РіСЂР°С„С–РєСѓ
                 _coordinatePlane.DrawPoint(userPoint, quadrant);
 
-                // Виводимо результат у listBox2
+                // Р’РёРІРѕРґРёРјРѕ СЂРµР·СѓР»СЊС‚Р°С‚ Сѓ listBox2
                 listBox2.Items.Clear();
-                listBox2.Items.Add($"Точка: {userPoint}");
-                listBox2.Items.Add($"Результат: {quadrantDescription}");
+                listBox2.Items.Add($"Г’Г®Г·ГЄГ : {userPoint}");
+                listBox2.Items.Add($"ГђГҐГ§ГіГ«ГјГІГ ГІ: {quadrantDescription}");
 
-                // Змінюємо колір тексту залежно від чверті
+                // Р—РјС–РЅСЋС”РјРѕ РєРѕР»С–СЂ С‚РµРєСЃС‚Сѓ Р·Р°Р»РµР¶РЅРѕ РІС–Рґ С‡РІРµСЂС‚С–
                 listBox2.ForeColor = quadrant switch
                 {
                     1 => Color.Red,
@@ -67,7 +67,7 @@ namespace lab4
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Сталася помилка: {ex.Message}", "Помилка",
+                MessageBox.Show($"Г‘ГІГ Г«Г Г±Гї ГЇГ®Г¬ГЁГ«ГЄГ : {ex.Message}", "ГЏГ®Г¬ГЁГ«ГЄГ ",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -88,9 +88,10 @@ namespace lab4
             }
         }
 
-        // Існуючі методи залишаємо як є
+        // Р†СЃРЅСѓСЋС‡С– РјРµС‚РѕРґРё Р·Р°Р»РёС€Р°С”РјРѕ СЏРє С”
         private void label1_Click(object sender, EventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e) { }
     }
+
 }
